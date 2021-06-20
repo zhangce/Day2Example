@@ -14,8 +14,8 @@ The API will return the predictions of all deployed models:
 
 ## Deployed Models
 
-Deployed models are a collection of models that each call to the API will 
-use to answer each call to the Serving APIs.
+Deployed models are a collection of models that are used for each call to the 
+serving API.
 
 All deployed models are stored in the branch `deployed_models`.
 
@@ -26,7 +26,7 @@ which are stored in the branch `deployment_candidates`.
 
 ## Trial
 
-Each Trial is identified by one unique training set uploaded by the user. 
+Each Trial is identified by one unique training set `uploaded` by the user. 
 Each trail has its own branch. Each commit in the trial branch contains:
 
   - training set: The state of the training set
@@ -42,6 +42,20 @@ a new commit:
   - new search space
   - new models
   - new meta data
+
+The user might choose to move some models in each trial to the deployment 
+candidate branch. This is where CI/CD gets triggered.
+
+## Validation Set
+
+All trials in an Aim shares the same validation dataset, which is stored in
+its own branch `validation_set`.
+
+## Production Set
+
+Each call to the serving APIs will be logged and use as the fresh 
+production set. By defaulted they are not logged in git.
+
 
 
 
