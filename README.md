@@ -23,3 +23,25 @@ All deployed models are stored in the branch `deployed_models`.
 
 All Deployed Models are choosen from a set of deployment candidates,
 which are stored in the branch `deployment_candidates`.
+
+## Trial
+
+Each Trial is identified by one unique training set uploaded by the user. 
+Each trail has its own branch. Each commit in the trial branch contains:
+
+  - training set: The state of the training set
+  - search space: The search space of AutoML
+  - models: The results of all models
+  - other meta data, e.g., labeling functions
+
+Every call to "What's Next" will create a set of suggested transformations.
+Each transformation takes as input one commit in a trail and bring it to 
+a new commit:
+
+  - new training set: after data cleaning, labeling etc.
+  - new search space
+  - new models
+  - new meta data
+
+
+
